@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h2>Editar Inscripción</h2>
+<form method="post">
+  <label>Fecha:</label><input type="date" name="fecha" value="{{ insc.fecha }}" required>
+  <label>Estudiante:</label>
+  <select name="estudiante_id">{% for e in estudiantes %}<option value="{{ e.id }}" {{ 'selected' if e.id == insc.estudiante_id }}>{{ e.nombre }} {{ e.apellidos }}</option>{% endfor %}</select>
+  <label>Curso:</label>
+  <select name="curso_id">{% for c in cursos %}<option value="{{ c.id }}" {{ 'selected' if c.id == insc.curso_id }}>{{ c.descripcion }}</option>{% endfor %}</select>
+  <button type="submit">Guardar</button> <a href="{{ url_for('inscripciones') }}">Cancelar</a>
+</form>
+{% endblock %}

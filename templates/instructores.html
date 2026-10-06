@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Instructores</h1>
+<a class="btn btn-success mb-3" href="{{ url_for('nuevo_instructor') }}">Nuevo</a>
+<table class="table table-striped">
+<thead class="table-dark"><tr><th>Id</th><th>Nombre</th><th>Especialidad</th><th>Acciones</th></tr></thead>
+<tbody>
+{% for d in datos %}
+<tr><td>{{ d.id }}</td><td>{{ d.nombre }}</td><td>{{ d.especialidad }}</td>
+<td><a class="btn btn-warning btn-sm" href="{{ url_for('editar_instructor', id=d.id) }}">Editar</a>
+<a class="btn btn-danger btn-sm" href="{{ url_for('eliminar', tabla='instructores', id=d.id) }}" onclick="return confirm('¿Está seguro?')">Eliminar</a></td></tr>
+{% endfor %}
+</tbody></table>
+{% endblock %}

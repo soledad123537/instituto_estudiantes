@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>{{ titulo }}</h1>
+<form method="post" class="col-md-6">
+  <div class="mb-3"><label class="form-label">Nombre</label>
+    <input class="form-control" name="nombre" value="{{ i.nombre if i else '' }}" required></div>
+  <div class="mb-3"><label class="form-label">Especialidad</label>
+    <input class="form-control" name="especialidad" value="{{ i.especialidad if i else '' }}" required></div>
+  <button class="btn btn-primary">Guardar</button>
+  <a class="btn btn-secondary" href="{{ url_for('instructores') }}">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block contenido %}
-<h2>Editar Curso</h2>
-<form method="post">
-  <label>Descripción:</label><input type="text" name="descripcion" value="{{ curso.descripcion }}" required>
-  <label>Cantidad de horas:</label><input type="number" name="horas" min="1" value="{{ curso.horas }}" required>
-  <button type="submit">Guardar</button> <a href="{{ url_for('cursos') }}">Cancelar</a>
-</form>
-{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>{{ titulo }}</h1>
+<form method="post" class="col-md-6">
+  <div class="mb-3"><label class="form-label">CI</label>
+    <input class="form-control" name="ci" value="{{ e.ci if e else '' }}" required></div>
+  <div class="mb-3"><label class="form-label">Nombres</label>
+    <input class="form-control" name="nombre" value="{{ e.nombre if e else '' }}" required></div>
+  <div class="mb-3"><label class="form-label">Apellidos</label>
+    <input class="form-control" name="apellidos" value="{{ e.apellidos if e else '' }}" required></div>
+  <div class="mb-3"><label class="form-label">Correo</label>
+    <input class="form-control" type="email" name="correo" value="{{ e.correo if e else '' }}"></div>
+  <div class="mb-3"><label class="form-label">Fecha de nacimiento</label>
+    <input class="form-control" type="date" name="fecha_nacimiento" value="{{ e.fecha_nacimiento if e else '' }}"></div>
+  <button class="btn btn-primary">Guardar</button>
+  <a class="btn btn-secondary" href="{{ url_for('estudiantes') }}">Cancelar</a>
+</form>
+{% endblock %}

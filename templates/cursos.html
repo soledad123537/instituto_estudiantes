@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block contenido %}
-<h2>Módulo Cursos</h2>
-<a class="btn" href="{{ url_for('nuevo_curso') }}">Nuevo</a>
-<table>
-<tr><th>ID</th><th>Descripción</th><th>Cantidad de horas</th><th>Acciones</th></tr>
-{% for c in cursos %}
-<tr><td>{{ c.id }}</td><td>{{ c.descripcion }}</td><td>{{ c.horas }}</td>
-<td><a href="{{ url_for('editar_curso', id=c.id) }}">Editar</a>
-<a href="{{ url_for('eliminar_curso', id=c.id) }}" onclick="return confirm('¿Eliminar?')">Eliminar</a></td></tr>
+<h1>Cursos</h1>
+<a class="btn btn-success mb-3" href="{{ url_for('nuevo_curso') }}">Nuevo</a>
+<table class="table table-striped">
+<thead class="table-dark"><tr><th>Id</th><th>Descripción</th><th>Horas</th><th>Costo (Bs)</th><th>Instructor</th><th>Acciones</th></tr></thead>
+<tbody>
+{% for d in datos %}
+<tr><td>{{ d.id }}</td><td>{{ d.descripcion }}</td><td>{{ d.horas }}</td><td>{{ d.costo }}</td><td>{{ d.instructor or '-' }}</td>
+<td><a class="btn btn-warning btn-sm" href="{{ url_for('editar_curso', id=d.id) }}">Editar</a>
+<a class="btn btn-danger btn-sm" href="{{ url_for('eliminar', tabla='cursos', id=d.id) }}" onclick="return confirm('¿Está seguro?')">Eliminar</a></td></tr>
 {% endfor %}
-</table>
+</tbody></table>
 {% endblock %}

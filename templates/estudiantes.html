@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block contenido %}
-<h2>Módulo Estudiantes</h2>
-<a class="btn" href="{{ url_for('nuevo_estudiante') }}">Nuevo</a>
-<table>
-<tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Fecha nac.</th><th>Acciones</th></tr>
-{% for e in estudiantes %}
-<tr><td>{{ e.id }}</td><td>{{ e.nombre }}</td><td>{{ e.apellidos }}</td><td>{{ e.fecha_nacimiento or '' }}</td>
-<td><a href="{{ url_for('editar_estudiante', id=e.id) }}">Editar</a>
-<a href="{{ url_for('eliminar_estudiante', id=e.id) }}" onclick="return confirm('¿Eliminar?')">Eliminar</a></td></tr>
+<h1>Estudiantes</h1>
+<a class="btn btn-success mb-3" href="{{ url_for('nuevo_estudiante') }}">Nuevo</a>
+<table class="table table-striped">
+<thead class="table-dark"><tr><th>ID</th><th>CI</th><th>Nombres</th><th>Apellidos</th><th>Correo</th><th>Fecha Nac</th><th>Acciones</th></tr></thead>
+<tbody>
+{% for d in datos %}
+<tr><td>{{ d.id }}</td><td>{{ d.ci }}</td><td>{{ d.nombre }}</td><td>{{ d.apellidos }}</td><td>{{ d.correo or '' }}</td><td>{{ d.fecha_nacimiento or '' }}</td>
+<td><a class="btn btn-warning btn-sm" href="{{ url_for('editar_estudiante', id=d.id) }}">Editar</a>
+<a class="btn btn-danger btn-sm" href="{{ url_for('eliminar', tabla='estudiantes', id=d.id) }}" onclick="return confirm('¿Está seguro?')">Eliminar</a></td></tr>
 {% endfor %}
-</table>
+</tbody></table>
 {% endblock %}
